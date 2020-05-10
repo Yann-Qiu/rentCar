@@ -31,7 +31,7 @@
                         $client = new Client();
                         $reponse = $client->request('POST', 'https://www.googleapis.com/geolocation/v1/geolocate', [
                             'form_params' => [
-                                'key' => 'AIzaSyBZj9TOwFQCVga6mhp52toDTq1ODs4tiAc'
+                                'key' => ''
                             ]
                         ]);
                         return $reponse;
@@ -40,7 +40,7 @@
                     function getWeather($lat,$lng)
                     {
                         $client = new Client();
-                        $reponse = $client->request('GET', 'http://api.openweathermap.org/data/2.5/weather?lat='.$lat.'&lon='.$lng.'&appid=8a5404ed47ef4eedaf8be009546b5fc3');
+                        $reponse = $client->request('GET', 'http://api.openweathermap.org/data/2.5/weather?lat='.$lat.'&lon='.$lng.'&appid=');
                         return $reponse;
                     }
                 ?>
