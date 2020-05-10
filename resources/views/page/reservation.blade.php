@@ -142,7 +142,7 @@
                                         }
                                     </script>
                                     <script async defer
-                                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZj9TOwFQCVga6mhp52toDTq1ODs4tiAc&callback=initMap">
+                                            src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
                                     </script>
                                 </div>
                                 <div class="modal-footer">
