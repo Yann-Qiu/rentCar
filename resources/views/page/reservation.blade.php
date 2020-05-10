@@ -2,7 +2,7 @@
 
 @section('body')
     <script
-        src="https://www.paypal.com/sdk/js?client-id=ARuN8hHkHGdGK2kqAkxkrYlYjdRI_h0Mna-khP8K5GlRivQTXNeRZsdJ3h1WMGKpmCFW6ssoK0_JmUbz">
+        src="https://www.paypal.com/sdk/js?client-id=">
     </script>
 
     <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(tpl/images/img_6.jpg)">
