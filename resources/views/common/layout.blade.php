@@ -34,6 +34,7 @@
 
 @include('common.requireJs')
 @yield('script')
+
 </body>
 </html>
 

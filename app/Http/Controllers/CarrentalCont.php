@@ -16,8 +16,9 @@ class CarrentalCont extends Controller
             return redirect('login');
         }else {
             $userName = Session::get('userName');
-            $user_id = Compte::where('userName',$userName)->first()->id;
-            $demandeList = Demande::with("compte")->find($user_id)->get()->toArray();
+            $user = Compte::where('userName',$userName)->first();
+            $user_id = $user->id;
+            $demandeList = Compte::with('demande')->find($user_id)->demande->toArray();
             return view('page.carrental',compact('userName','user_id','demandeList'));
         }
     }

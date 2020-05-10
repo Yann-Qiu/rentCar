@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
+
 class Index extends Controller
 {
     //
@@ -9,5 +11,4 @@ class Index extends Controller
     {
         return view('page.index');
     }
-
 }

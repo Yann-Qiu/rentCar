@@ -21,20 +21,27 @@
             <div class="container">
                 <div class="row">
                     <?php foreach($demandeList as $demande):?>
-                    <div class="col-sm-12">
+                    <div class="col-sm-4">
                         <div class="panel panel-info"  style="margin: 50px 5px 5px 5px">
                             <div class="panel-heading">
                                 <h2 class="panel-title">Ordre of User: <?php echo $userName; ?></h2>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="text-align: center;">
                                 <div>Order ID: <?php echo $demande['id']; ?></div>
                                 <div>Car Type: <?php echo $demande['type']; ?></div>
-                                <div>Name: <?php echo $demande['name']; ?></div>
-                                <div>Number Licence: <?php echo $demande['licence']; ?></div>
-                                <div>Start Time: <?php echo $demande['startTime']; ?></div>
-                                <div>Duration: <?php echo $demande['duration']; ?></div>
-                                <div>Place to get car: <?php echo $demande['lieu']; ?></div>
-                                <div>Passager Number: <?php echo $demande['passengerNum']; ?></div>
+                                <?php
+                                    $data = '';
+                                    $data .= "Order ID:".$demande["id"];
+                                    $data .= 'Car Type:'.$demande["type"];
+                                    $data .= 'Name:'.$demande["name"];
+                                    $data .= 'Number Licence:'.$demande["licence"];
+                                    $data .= 'Start Time:'.$demande["startTime"];
+                                    $data .= 'Duration:'.$demande["duration"];
+                                    $data .= 'Place To Get Car:'.$demande["lieu"];
+                                    $data .= 'Passager Number:'.$demande["passengerNum"];
+                                ?>
+                                <img src =<?php echo "https://api.qrserver.com/v1/create-qr-code/?data=". urlencode($data) ."&size=100x100"; ?> alt ="" title ="" /><br/>
+                                <a href=<?php echo "/reservDet/".$demande['id']?>>Detail</a>
                             </div>
                         </div>
                     </div>

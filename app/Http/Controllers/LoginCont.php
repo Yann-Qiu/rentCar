@@ -19,16 +19,14 @@ class LoginCont extends Controller
         if($user->first()) {
             if ($user->toArray()[0]['password'] === $_POST['pwd']){
                 Session::put('userName', $_POST["userName"]);
-                return Redirect::to('/');
+                return response()->json('{"status":"true"}');
             }
             else {
-                Cookie::queue('loginInfo','username or password false');
-                return Redirect::to('login');
+                return response()->json('{"status":"false"}');
             }
         }
         else {
-            Cookie::queue('loginInfo','username or password false');
-            return Redirect::to('login');
+            return response()->json('{"status":"false"}');
         }
 
     }

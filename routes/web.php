@@ -36,3 +36,5 @@ Route::post('reserv', 'reservationcont@index');
 Route::post('reservationcont/valide', 'reservationcont@valide');
 
 Route::get('rent', 'rentcarcont@index');
+
+Route::get('reservDet/{id}', 'reservDetailCont@index');

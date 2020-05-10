@@ -29,6 +29,7 @@
                                                     <div class="col-md-12">
                                                         <label for="pwd">Password</label>
                                                         <input type="password" id="pwd" class="form-control" name="pwd">
+                                                        <div style='color:red' id='info'></div>
                                                         <?php
                                                         use Illuminate\Support\Facades\Cookie;
                                                         if(Cookie::has('loginInfo')) {
@@ -41,11 +42,15 @@
                                                     </div>
                                                 </div>
 
-                                                {{csrf_field()}}
+                                                <input type="hidden" name="_token" id='token' value={{csrf_token()}}>
 
                                                 <div class="row form-group">
                                                     <div class="col-md-12">
-                                                        <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                                                        <!-- <input type="submit" class="btn btn-primary btn-block" value="Submit"> -->
+                                                        <button id="submit" class="btn btn-primary btn-block" type="button">
+                                                            Submit
+                                                        </button>
+
                                                     </div>
                                                 </div>
 
@@ -71,27 +76,24 @@
 @endsection
 
 @section('script')
-    <script>
-        function loginfunc(){
-            var xhr = new XMLHttpRequest();
-            xhr.open("post","loginFunc.php",true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if(xhr.readyState == 4 && xhr.status == 200){
-                    var resText = xhr.responseText;
-                    if(resText === 'login success'){
-                        window.location.href="./destination.php";
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#submit').click(function(event) {
+            /* Act on the event */
+            $.post('/logincont/valide',{'userName' : $('#fullname').val(),"pwd":$('#pwd').val(),"_token":$('#token').val()},function(data){
+                    data = JSON.parse(data);
+                    if(data['status'] === 'true')
+                    {
+                        console.log(1);
+                        $(location).attr('href', '/');
                     }
-                    else{
-                        var choose = document.getElementById('choose');
-                        choose.innerHTML= resText;
+                    else
+                    {
+                        $('#info').text('username or password false');
                     }
-                }
-            }
-            var user = document.getElementById('fullname').value;
-            var pwd = document.getElementById('pwd').value;
-            xhr.send('userName='+ user + '&password=' + pwd);
-        }
-    </script>
+            },'json')
+        });
+        
+    });
+</script>
 @endsection
-
